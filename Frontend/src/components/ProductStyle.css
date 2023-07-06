@@ -1,0 +1,25 @@
+@media (max-width: 425px) {
+    .col-span-3 {
+      grid-column: span 1;
+    }
+  }
+  @media (min-width: 426px) and (max-width: 767px) {
+    .col-span-12 {
+      grid-column: span 1;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .col-span-6 {
+      grid-column: span 1;
+    }
+  }
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .col-span-4 {
+      grid-column: span 1;
+    }
+  }
+  @media (min-width: 1280px) {
+    .col-span-3 {
+      grid-column: span 1;
+    }
+  }
