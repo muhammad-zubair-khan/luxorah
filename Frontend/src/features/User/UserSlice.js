@@ -78,7 +78,9 @@ const initialState = {
   isLoading: false,
   isSuccess: false,
   message: "",
-  wishlist: null
+  wishlist: null,
+  toastShown: false,
+
 };
 
 export const authSlice = createSlice({
@@ -125,7 +127,14 @@ export const authSlice = createSlice({
         state.isError = true;
         state.isSuccess = false;
         state.isLoading = false;
-        state.message = "failed";
+        state.message = 'failed';
+        // if(state.isError === true){
+        //   toast.error(action?.error?.message)
+        // }
+        if (!state.toastShown && action.error && action.error.message) {
+          toast.error(action.error.message);
+          state.toastShown = true;
+        }
       })
       .addCase(logoutUser.pending, (state) => {
         state.isLoading = true;
