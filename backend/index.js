@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(morgan("dev"));
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 const authRoute = require("./routes/user");
@@ -45,7 +45,6 @@ app.use("/api/upload", uploadRoute);
 app.use(notFound);
 app.use(errHandler);
 
-// Configure the reverse proxy middleware to proxy requests to the Vite app
 app.get("/", (req, res) => {
   res.json('server is running')
 });
