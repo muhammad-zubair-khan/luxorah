@@ -47,7 +47,7 @@ app.use(errHandler);
 
 // Configure the reverse proxy middleware to proxy requests to the Vite app
 app.get("/", (req, res) => {
-  res.send('server is running')
+  res.json('server is running')
 });
 
 app.listen(PORT, () => {
