@@ -4,7 +4,7 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const dbConnect = require("./config/dbConnect");
-const { notFound, errorHandler } = require("./middlewares/errorHandler");
+const { notFound, errHandler } = require("./middlewares/errorHandler");
 require("dotenv").config();
 
 const app = express();
@@ -42,7 +42,7 @@ app.use("/api/upload", uploadRoute);
 
 // Error handling middleware
 app.use(notFound);
-app.use(errorHandler);
+app.use(errHandler);
 
 // Default route
 app.get("/", (req, res) => {
