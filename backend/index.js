@@ -46,7 +46,7 @@ app.use(errHandler);
 
 // Default route
 app.get("/", (req, res) => {
-res.send("Server is running");
+res.json("Server is running");
 });
 
 // Start the server
