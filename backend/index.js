@@ -4,13 +4,9 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const dbConnect = require("./config/dbConnect");
-const session = require("express-session");
 const app = express();
 const { notFound, errHandler } = require("./middlewares/errorHandler");
 require("dotenv").config();
-const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const User = require("./models/auth");
 const PORT = process.env.PORT || 4000;
 dbConnect();
 app.use(bodyParser.json());
@@ -18,7 +14,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(morgan("dev"));
 app.use(cors());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 
 const authRoute = require("./routes/user");
@@ -43,7 +40,6 @@ const enqRoute = require("./routes/enq");
 app.use("/api/enquiry", enqRoute);
 
 const uploadRoute = require("./routes/uplaodImage");
-const { strategy } = require("sharp");
 app.use("/api/upload", uploadRoute);
 
 app.use(notFound);
@@ -51,7 +47,7 @@ app.use(errHandler);
 
 // Configure the reverse proxy middleware to proxy requests to the Vite app
 app.get("/", (req, res) => {
-  res.send('/server is running')
+  res.send('server is running')
 });
 
 app.listen(PORT, () => {
