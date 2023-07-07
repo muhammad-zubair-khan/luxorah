@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "run-p start:** server",
+    "start": "node index.js",
     "dev": "concurrently \"npm run react\" \"npm run server\"",
-    "server": "node index"
+    "server": "nodemon index.js"
   },
   "keywords": [
     "NodeJs",
